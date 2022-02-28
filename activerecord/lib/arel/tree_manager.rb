@@ -40,6 +40,14 @@ module Arel # :nodoc: all
 
     attr_reader :ast
 
+    def initialize(ast)
+      @ast = ast
+    end
+
+    def initialize_copy(other)
+      super(other.clone)
+    end
+
     def to_dot
       collector = Arel::Collectors::PlainString.new
       collector = Visitors::Dot.new.accept @ast, collector
@@ -50,11 +58,6 @@ module Arel # :nodoc: all
       collector = Arel::Collectors::SQLString.new
       collector = engine.connection.visitor.accept @ast, collector
       collector.value
-    end
-
-    def initialize_copy(other)
-      super
-      @ast = @ast.clone
     end
   end
 end

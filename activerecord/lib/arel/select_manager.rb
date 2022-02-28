@@ -7,8 +7,8 @@ module Arel # :nodoc: all
     STRING_OR_SYMBOL_CLASS = [Symbol, String]
 
     def initialize(table = nil)
-      @ast = Nodes::SelectStatement.new(table)
-      @ctx = @ast.cores.last
+      super(Nodes::SelectStatement.new(table))
+      @ctx = ast.cores.last
     end
 
     def initialize_copy(other)
