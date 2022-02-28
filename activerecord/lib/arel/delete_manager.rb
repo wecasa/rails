@@ -5,7 +5,7 @@ module Arel # :nodoc: all
     include TreeManager::StatementMethods
 
     def initialize(table = nil)
-      @ast = Nodes::DeleteStatement.new(table)
+      super(Nodes::DeleteStatement.new(table))
     end
 
     def from(relation)

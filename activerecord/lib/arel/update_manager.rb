@@ -5,7 +5,7 @@ module Arel # :nodoc: all
     include TreeManager::StatementMethods
 
     def initialize(table = nil)
-      @ast = Nodes::UpdateStatement.new(table)
+      super(Nodes::UpdateStatement.new(table))
     end
 
     ###
